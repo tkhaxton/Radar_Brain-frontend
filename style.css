@@ -57,6 +57,20 @@ h2{
    clear:both;
 }
 
+#bigcontainer_adjustableheight{
+   /* centering, following http://demo.tutorialzine.com/2010/03/centering-div-vertically-and-horizontally/demo.html
+   position:absolute;
+	left:50%;
+	top:50%;
+   margin:-250px 0 0 -450px;*/
+   width: 600px;
+   /*height: 400px;*/
+   position:relative;
+   left:50%;
+   margin: 0px 0 0 -300px;
+   clear:both;
+}
+
 #title{
    font-size:36px;
    height: 40px;

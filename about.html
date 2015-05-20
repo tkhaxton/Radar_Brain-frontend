@@ -15,28 +15,29 @@
    <body>
       <div id="wrap">
       <div id="main">
-      <div id="bigcontainer">
+      <div id="bigcontainer_adjustableheight">
          <div id="title">
             Radar Brain
          </div>
          <div id="content">
-            Radar Brain uses machine learning for weather nowcasting.
-            <br><br>
-
-            Radar Brain contains an artificial neural network that has been trained to predict radar patterns using historical data from the <a href="http://www.ncdc.noaa.gov/" target="_blank">National Oceanic and Atmosopheric Administration</a>.
+            Whether I'm planning a stroller run with my son, a hike, or just deciding if I need an umbrella, I often need to know if it's going to rain. I used to look at animated radar images at <a href="http://www.weatherunderground.com" target="_blank">Weather Underground</a>, using my eyes and fingers to extrapolate the images into the future.
             <br><br>
             
-            When you use Radar Brain, your location is geocoded by the <a href="http://www.mapquest.com" target="_blank">MapQuest</a> API, real-time radar data near your location over the last 90 minutes is downloaded from the <a href="http://www.weatherunderground.com" target="_blank">Weather Underground</a> API, and the neural network computes the predicted forecast in your browser using javascript.  Recent and predicted rainfall is plotted using the <a href="https://developers.google.com/chart" target="_blank">Google Charts API</a>.
+            Can a computer do better?  Radar Brain is an artificial neural network that connects the pixels in an animated radar image to the predicted rainfall at future times via <i>artificial neurons</i>, operators that convert inputs to outputs according to weights on the inputs and biases on the outputs.  I trained the neural network to predict rainfall by feeding it historical radar data from the <a href="http://www.ncdc.noaa.gov/" target="_blank">National Oceanic and Atmosopheric Administration</a>.  Following a backpropagation algorithm (good tutorial <a href="http://neuralnetworksanddeeplearning.com" target="_blank">here</a>), I instructed the network to learn from the data, automatically and iteratively adjusting the neurons' weights and biases to improve the agreement between predicted and actual rainfall.
             <br><br>
-         
+            
+            When you use Radar Brain, the neural network applies what it's learned to a real-time animated radar image downloaded from the <a href="http://www.wunderground.com/weather/api" target="_blank">Weather Underground API</a>, implementing the neural network in your browser using JavaScript.
+            <br><br>
+            
             Want to play with Radar Brain when it's not raining?  Try looking at NOAA's <a href="http://www.nws.noaa.gov/radar_tab.php" target="_blank">National Radar Mosaic</a> to find a location where it's raining.
             <br><br>
             
             Radar Brain is under development.  Please send comments and questions to <a href="mailto:tomhaxton+radarbrain@gmail.com">Tom Haxton</a>.
             <br><br>
             
-            Radar Brain is an open-source project.  The <a href="https://github.com/tkhaxton/Radar_Brain-frontend" target="_blank">front end</a> and <a href="https://github.com/tkhaxton/Radar_Brain-backend" target="_blank">back end</a> are available on GitHub.
-            
+            Radar Brain is an open-source project.  The <a href="https://github.com/tkhaxton/Radar_Brain-frontend" target="_blank">front end</a> and <a href="https://github.com/tkhaxton/Radar_Brain-backend" target="_blank">back end</a> are available on GitHub. Radar Brain uses the <a href="http://www.mapquest.com" target="_blank">MapQuest</a> API for geocoding and the <a href="https://developers.google.com/chart" target="_blank">Google Charts API</a> for plotting.
+            <br><br>
+                        
             <img src="wunderground.png" height="47" width="79" alt="Weather Underground logo">
                <img src="http://developer.mapquest.com/content/osm/mq_logo.png" alt="MapQuest logo">
                </div>
