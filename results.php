@@ -18,6 +18,8 @@
 $radarurl = $_GET['radarurl'];
 $fullurl = $radarurl . "&num=15";
 $animation = 'radar.gif';
+$state = $_GET['state'];
+$city = $_GET['city'];
 
 // Download animated gif radar image from Weather Underground API
 
@@ -103,6 +105,8 @@ var bias_layer1_data = <?php echo json_encode($bias_layer1_data); ?>;
 var bias_layer2_data = <?php echo json_encode($bias_layer2_data); ?>;
 var weight_layer1_data = <?php echo json_encode($weight_layer1_data); ?>;
 var weight_layer2_data = <?php echo json_encode($weight_layer2_data); ?>;
+var city = "<?php echo $city ?>";
+var state = "<?php echo $state ?>";
 </script>
 
 <div id="wrap">

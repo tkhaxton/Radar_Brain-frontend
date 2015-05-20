@@ -159,22 +159,23 @@ function drawChart() {
    }
    var forecast_message;
    if(rain_category_timeseries.length == 1){
-      forecast_message = rain_categories[rain_category_timeseries[0]] + " rain for the next two hours.";
+      forecast_message = rain_categories[rain_category_timeseries[0]] + " rain for the next two hours";
    }
    else{
       if(rain_category_timeseries[0] == 0){
-         forecast_message = rain_categories[rain_category_timeseries[1]] + " rain starting in " + rain_category_timeseries_times[1].toString() + " minutes.";
+         forecast_message = rain_categories[rain_category_timeseries[1]] + " rain starting in " + rain_category_timeseries_times[1].toString() + " minutes";
       }
       else{
          forecast_message = rain_categories[rain_category_timeseries[0]];
          if(rain_category_timeseries[1] == 0){
-            forecast_message += (" rain stopping in " + rain_category_timeseries_times[1].toString() + " minutes.");
+            forecast_message += (" rain stopping in " + rain_category_timeseries_times[1].toString() + " minutes");
          }
          else{
-            forecast_message += (" rain becoming " + rain_categories_lowercase[rain_category_timeseries[1]] + " in " + rain_category_timeseries_times[1].toString() + " minutes.");
+            forecast_message += (" rain becoming " + rain_categories_lowercase[rain_category_timeseries[1]] + " in " + rain_category_timeseries_times[1].toString() + " minutes");
          }
       }
    }
+   forecast_message += (" in " + city + ", " + state + ".");
    
    // Print message on web page
    

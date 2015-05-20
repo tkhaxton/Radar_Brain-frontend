@@ -21,8 +21,8 @@ $(document).ready(function(){
    var width = 2 * lonrange + 1;
    var minlat, maxlat, minlon, maxlon;
    
-   function reDirect(radarurl) {
-      var page='results.php?radarurl='+radarurl;
+   function reDirect(radarurl, city, state) {
+      var page='results.php?radarurl='+radarurl+'&city='+city+'&state='+state;
       document.location.href=page;
    }
        
@@ -45,7 +45,11 @@ $(document).ready(function(){
    function showPosition(position, event){
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
-      load_new_page_using_coordinates(event, latitude, longitude);
+      $.getJSON(event.data.geourlbase + latitude.toString() + "," + longitude.toString(), function(json) {
+         city = json.results[0].locations[0].adminArea5;
+         state = json.results[0].locations[0].adminArea3;
+         load_new_page_using_coordinates(event, latitude, longitude, city, state);
+      });
    }
    
    function showError(error) {
@@ -69,6 +73,8 @@ $(document).ready(function(){
       var termvalue = $('#addressterm').val();
       var longitude;
       var latitude;
+      var city;
+      var state;
       var radarurl;
       var geocodeQualityCode;
       var confidencelevels;
@@ -84,19 +90,21 @@ $(document).ready(function(){
          $.getJSON(event.data.geourlbase + termvalue, function(json) {
             latitude = json.results[0].locations[0].latLng.lat;
             longitude = json.results[0].locations[0].latLng.lng;
+            city = json.results[0].locations[0].adminArea5;
+            state = json.results[0].locations[0].adminArea3;
             geocodeQualityCode = json.results[0].locations[0].geocodeQualityCode;
             confidencelevels = geocodeQualityCode.substr(geocodeQualityCode.length - 3);
             if(confidencelevels == 'XXX'){
                $('#message').html('Location not understood. Please try again.');
             }
             else{
-               load_new_page_using_coordinates(event, latitude, longitude);
+               load_new_page_using_coordinates(event, latitude, longitude, city, state);
             }
          });
       }
    }
    
-   function load_new_page_using_coordinates(event, latitude, longitude){
+   function load_new_page_using_coordinates(event, latitude, longitude, city, state){
       
       // Round to the resolution of the training data set
       
@@ -119,13 +127,13 @@ $(document).ready(function(){
       
       // Redirect to new page created by php using radar url created here
       
-      reDirect(str);
+      reDirect(str, city, state);
    }
 
    var geourl = "http://open.mapquestapi.com/geocoding/v1/address?key=" + geoapikey + "&callback=?&location=";
    var weatherurl = "http://api.wunderground.com/api/" + weatherapikey + "/animatedradar/image.gif?&newmaps=0&callback=?";
    
-   $('#geolocateclick').click({weatherurlbase: weatherurl}, get_location_on_click);
+   $('#geolocateclick').click({geourlbase: geourl, weatherurlbase: weatherurl}, get_location_on_click);
    $('#addressclick').click({geourlbase: geourl, weatherurlbase: weatherurl}, onclick);
    $('#addressterm').keyup(function(event){
       if(event.keyCode == 13){
