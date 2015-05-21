@@ -12,8 +12,8 @@ $(document).ready(function(){
    // One-sided range of radar data used to predict future radar
    // Data size is (2*latrange+1)*(2*lonrange+1)
    
-   var latrange = 5;
-   var lonrange = 5;
+   var latrange = 10;
+   var lonrange = 10;
    
    // Derived variables
    

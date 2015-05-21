@@ -1,7 +1,7 @@
 
 var spacing = 6;
-var x_width = 11;
-var y_width = 11;
+var x_width = 21;
+var y_width = 21;
 var time_depth_past = 15;
 var time_depth_future = 20;
 var number_total_layers = 3;
