@@ -124,7 +124,7 @@ function drawChart() {
    
    // Create verbal message
    
-   var rain_thresholds = [1.0, 2.5, 10, 50];
+   var rain_thresholds = [0.1, 2.5, 10, 50];
    var rain_categories = ["No", "Light", "Moderate", "Heavy", "Violent"];
    var rain_categories_lowercase = ["no", "light", "moderate", "heavy", "violent"];
    var rain_category_timeseries = [];
