@@ -56,7 +56,7 @@ foreach ( $gifDecoder -> GIFGetFrames ( ) as $frameimage ) {
          if($palette_index==0){
             $dBZ[$frame][$i][$j] = 0;    //  Black indicates below threshold
          }
-         else if(($palette_index>1) and ($palette_index<17)){
+         else if(($palette_index>0) and ($palette_index<17)){
             $dBZ[$frame][$i][$j] = 5 * ($palette_index - 1);
          }
          else if(($palette_index>16) and ($palette_index<115)){
